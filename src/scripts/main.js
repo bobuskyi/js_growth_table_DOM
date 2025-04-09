@@ -16,10 +16,9 @@ appendColumn.addEventListener('click', () => {
 
     for (let i = 0; i < fieldRowsCount; i++) {
       const parentElement = fieldRows[i];
-      const theLastChild = parentElement.lastChild;
       const newTd = document.createElement('td');
 
-      parentElement.insertBefore(newTd, theLastChild.nextSibling);
+      parentElement.insertBefore(newTd, null);
     }
   }
 
@@ -53,7 +52,7 @@ appendRow.addEventListener('click', () => {
   const fieldRows = field.querySelectorAll('tr');
   const fieldRowsCount = fieldRows.length;
   const fieldColumnsCount = field.querySelectorAll('tr:first-child td').length;
-  const fieldLastRow = field.querySelector('tr:last-child');
+  const fieldLastRow = fieldRows[fieldRowsCount - 1];
 
   if (fieldRowsCount < 10) {
     removeRow.removeAttribute('disabled');
@@ -77,7 +76,7 @@ appendRow.addEventListener('click', () => {
 removeRow.addEventListener('click', () => {
   const fieldRows = field.querySelectorAll('tr');
   const fieldRowsCount = fieldRows.length;
-  const fieldLastRow = field.querySelector('tr:last-child');
+  const fieldLastRow = fieldRows[fieldRowsCount - 1];
 
   if (fieldRowsCount > 2) {
     appendRow.removeAttribute('disabled');
